@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSubmit } from '../../redux/registeReducer/regActions';
 
 const useForm = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -18,7 +21,13 @@ const useForm = () => {
       [name]: value,
     });
   };
-
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      dispatch(setSubmit(false));
+    } else if (Object.keys(errors).length === 0 && Object.values(values)[0].length > 0) {
+      dispatch(setSubmit(true));
+    }
+  }, [errors]);
   return {
     handleChange, values, errors, setErrors,
   };

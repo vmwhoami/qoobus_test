@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Button, Form } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Layout from '../components/layout';
 import FormInput from '../components/formInput/formInput';
 import useForm from '../components/useForm/useForm';
@@ -9,20 +9,24 @@ import { addUser } from '../redux/registeReducer/regActions';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.register);
+  const { submitting } = state;
+
   const {
     values, errors, handleChange, setErrors,
   } = useForm();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validate(values));
-    if (Object.values(errors).length < 1) {
-      const user = {
-        email: values.email,
-        password: values.password,
-        firstName: values.firstName,
-        lastName: values.lastName,
-      };
-      dispatch(addUser({ user }));
+    const user = {
+      email: values.email,
+      password: values.password,
+      firstName: values.firstName,
+      lastName: values.lastName,
+    };
+    if (submitting) {
+      dispatch(addUser(user));
     }
   };
 
@@ -30,7 +34,7 @@ const Register = () => {
     <Layout>
       <Row>
         <Row className="d-flex mx-0 p-4 align-items-center w-100 justify-content-between">
-          <h5 className="text-uppercase">Login</h5>
+          <h5 className="text-uppercase">Register</h5>
 
         </Row>
 
@@ -46,7 +50,7 @@ const Register = () => {
               handleChange={handleChange}
               value={values.email}
             />
-
+            {errors.email && <p className="text-danger text-uppercase">{errors.email}</p>}
             <FormInput
               groupClass="d-flex flex-column px-0 pt-3"
               inputClass="p-3  border border-success"
@@ -58,18 +62,19 @@ const Register = () => {
               handleChange={handleChange}
               value={values.password}
             />
-
+            {errors.password && <p className="text-danger text-uppercase">{errors.password}</p>}
             <FormInput
               groupClass="d-flex flex-column px-0 pt-3"
               inputClass="p-3  border border-success"
               labelClass="text-uppercase font-weight-light"
               name="passwordRepeat"
               label="Password Repeat"
+              autoComplete="current-password"
               type="password"
               handleChange={handleChange}
               value={values.passwordRepeat}
             />
-
+            {errors.passwordRepeat && <p className="text-danger text-uppercase">{errors.passwordRepeat}</p>}
             <FormInput
               groupClass="d-flex flex-column px-0 pt-3"
               inputClass="p-3  border border-success"
@@ -80,6 +85,7 @@ const Register = () => {
               handleChange={handleChange}
               value={values.firstName}
             />
+            {errors.firstName && <p className="text-danger text-uppercase">{errors.firstName}</p>}
 
             <FormInput
               groupClass="d-flex flex-column px-0 pt-3"
@@ -91,6 +97,7 @@ const Register = () => {
               handleChange={handleChange}
               value={values.lastName}
             />
+            {errors.lastName && <p className="text-danger text-uppercase">{errors.lastName}</p>}
 
             <Form.Group className="d-flex flex-column px-0 pt-5">
               <Button

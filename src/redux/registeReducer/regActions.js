@@ -1,5 +1,5 @@
 import {
-  REGISTER_USER, ERROR,
+  REGISTER_USER, SUBMITTING,
 } from './regtypes';
 
 const addUser = (user) => ({
@@ -7,11 +7,11 @@ const addUser = (user) => ({
   payload: user,
 });
 
-const addUserErr = (err) => ({
-  type: ERROR,
-  payload: err,
+const setSubmit = (bool) => ({
+  type: SUBMITTING,
+  payload: bool,
 });
 
 export {
-  addUser, addUserErr,
+  addUser, setSubmit,
 };
