@@ -1,19 +1,35 @@
-## Admin Ui Maib
+## Qoobus React Test
 
 ### Requirements
 
-- Must use the latest ReactJS.
-- Mock web-service requests as needed. Assume API response delay ranging from 2ms to 15s.
-- Use a favourite set of tools
-- Best code practices.
+Task for React
 
-- Selecting a period from the picker (upper-right portion) should re-populate the “card”, “chart” and “list” parts.
-- Data should refresh automatically every 10s.
+#### Init project (React with typescript, or javascript)
 
-- UI should allow searching by 3 input fields.
-- After a “search” button is pressed, list items should be re-populated with API response.
+#### Register page (Keep them in the redux)
 
-![screenshot](./maib_admin_test.gif)
+- Email
+- Password
+- Repeat password
+- First name
+- Last name
+  (Validation for every field)
+
+#### Login page (If it is logged to be kept in redux,If logged redirect to homepage,verify email and password,check if the email with the password matches the ones from the registration)
+
+- Email
+- Password
+
+#### Home page
+
+- Chart example
+- Animation example
+
+#### Logout
+
+### Screenshot
+
+![screenshot](./)
 
 ## Time estimate
 

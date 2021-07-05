@@ -2,7 +2,7 @@ import React from 'react';
 import { TiChartPie } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import {
-  Navbar, Nav,
+  Navbar, Nav, Button,
 } from 'react-bootstrap';
 
 const NavBar = () => (
@@ -12,6 +12,8 @@ const NavBar = () => (
       <Nav.Link className="text-white" href="#home">VMWHOAMI</Nav.Link>
     </Nav>
     <Link className="text-white text-uppercase mr-4" to="/login">Login</Link>
+    <Link className="text-white text-uppercase mr-4" to="/register">Register</Link>
+    <Button type="button" className="text-white text-uppercase mr-4">Logout</Button>
   </Navbar>
 );
 
