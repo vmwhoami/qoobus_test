@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
+    monospace;
+}
+
+.cardcover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2b44726e;
+  z-index: 3;
+}
+
+.navbar-green {
+  background-color: #036647 !important;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.left-bar {
+  background-color: #fafafa;
+  box-shadow: 4px 0 10px -3px rgba(0, 0, 0, 0.2);
+}
+
+.cust-button {
+  font-size: 20px !important;
+}
+
+.title {
+  background-color: #7aa53c;
+}
+
+.btn.title:hover {
+  background-color: #036647 !important;
+}
+
+.green {
+  color: #7aa53c;
+}
+
+.fullheight {
+  min-height: 100vh !important;
+}
+
+.underline::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  background-color: white;
+  width: 85px;
+  height: 4px;
+}
+
+.box-shadow {
+  box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.3);
+}
+
+.date-select {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.3);
+}
+
+.date-select input {
+  background-color: transparent !important;
+}
+
+.react-datepicker__input-container input {
+  padding: 5px 5px;
+  border: none;
+  position: relative;
+}
+
+.react-datepicker__input-container input:focus-visible {
+  outline: none;
+}
+
+.react-datepicker-wrapper {
+  position: relative;
+}
+
+.react-datepicker-wrapper::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 40% !important;
+  right: -8% !important;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #036647;
+}
+
+@media (max-width: 991.98px) {
+  .fullheight {
+    min-height: 30vh !important;
+  }
+}
