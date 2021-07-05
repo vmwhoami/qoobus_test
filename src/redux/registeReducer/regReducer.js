@@ -4,7 +4,7 @@ import {
 
 const initial = {
   users: [],
-  submitting: false,
+  submitted: false,
 };
 
 const reducer = (state = initial, action) => {
@@ -12,7 +12,7 @@ const reducer = (state = initial, action) => {
     case REGISTER_USER:
       return { ...state, users: [...state.users, action.payload] };
     case SUBMITTING:
-      return { ...state, submitting: action.payload };
+      return { ...state, submitted: action.payload };
     default:
       return state;
   }

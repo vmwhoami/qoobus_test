@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Button, Form } from 'react-bootstrap';
+// import { useDispatch } from 'react-redux';
 import Layout from '../components/layout';
 import FormInput from '../components/formInput/formInput';
-import useForm from '../components/useForm/useForm';
+import validateLogin from '../components/useForm/validateLogin';
 
 const Login = () => {
-  const { values, handleChange } = useForm();
-  const handleSubmit = () => {
-
+  // const dispatch = useDispatch();
+  const [errors, setErrors] = useState({});
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(validateLogin(values));
+  };
+
   return (
     <Layout>
       <Row>
@@ -29,7 +42,7 @@ const Login = () => {
               handleChange={handleChange}
               value={values.email}
             />
-
+            {errors.email && <p className="text-danger text-uppercase">{errors.email}</p>}
             <FormInput
               groupClass="d-flex flex-column px-0 pt-3"
               inputClass="p-3  border border-success"
@@ -41,7 +54,7 @@ const Login = () => {
               handleChange={handleChange}
               value={values.password}
             />
-
+            {errors.password && <p className="text-danger text-uppercase">{errors.password}</p>}
             <Form.Group className="d-flex flex-column px-0 pt-5">
               <Button
                 className="btn-flat py-3  text-center rounded-0 border-0"

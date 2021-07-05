@@ -1,4 +1,4 @@
-const validateInfo = (values) => {
+const validateRegistration = (values) => {
   const errors = {};
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -33,4 +33,4 @@ const validateInfo = (values) => {
   return errors;
 };
 
-export default validateInfo;
+export default validateRegistration;

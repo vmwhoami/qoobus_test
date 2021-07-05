@@ -1,35 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Row, Button, Form } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
 import Layout from '../components/layout';
 import FormInput from '../components/formInput/formInput';
 import useForm from '../components/useForm/useForm';
-import validate from '../components/useForm/validateInfo';
-import { addUser } from '../redux/registeReducer/regActions';
+import validateRegistration from '../components/useForm/validateRegistration';
 
 const Register = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state.register);
-  const { submitting } = state;
-
+  const submitted = useSelector((state) => state.register.submitted);
   const {
-    values, errors, handleChange, setErrors,
-  } = useForm();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors(validate(values));
-    const user = {
-      email: values.email,
-      password: values.password,
-      firstName: values.firstName,
-      lastName: values.lastName,
-    };
-    if (submitting) {
-      dispatch(addUser(user));
-    }
-  };
-
+    values, errors, handleChange, handleSubmit,
+  } = useForm(validateRegistration);
+  if (submitted) {
+    return (
+      <Layout>
+        <h1>Registration Successful</h1>
+      </Layout>
+    );
+  }
   return (
     <Layout>
       <Row>

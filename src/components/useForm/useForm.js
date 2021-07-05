@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSubmit } from '../../redux/registeReducer/regActions';
+import { addUser, setSubmit } from '../../redux/registeReducer/regActions';
 
-const useForm = () => {
+const useForm = (validate) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: '',
@@ -13,7 +13,7 @@ const useForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-
+  const [isSubmitting, setisSubmitting] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -21,15 +21,28 @@ const useForm = () => {
       [name]: value,
     });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(validate(values));
+    setisSubmitting(true);
+  };
+
   useEffect(() => {
-    if (Object.keys(errors).length > 0) {
-      dispatch(setSubmit(false));
-    } else if (Object.keys(errors).length === 0 && Object.values(values)[0].length > 0) {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      dispatch(addUser(values));
       dispatch(setSubmit(true));
+      setValues({
+        email: '',
+        password: '',
+        passwordRepeat: '',
+        firstName: '',
+        lastName: '',
+      });
     }
   }, [errors]);
   return {
-    handleChange, values, errors, setErrors,
+    handleChange, values, errors, setErrors, handleSubmit,
   };
 };
 
