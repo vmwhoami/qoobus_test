@@ -13,10 +13,22 @@ const validateInfo = (values) => {
   } else if (values.password.trim().length < 6) {
     errors.password = 'Password has to be longer than 6 characters';
   }
-  if (!values.password2.trim()) {
+  if (!values.passwordRepeat.trim()) {
     errors.password2 = 'Password is required';
-  } else if (values.password2.trim() !== values.password.trim()) {
-    errors.password2 = 'Passwords do not match';
+  } else if (values.passwordRepeat.trim() !== values.password.trim()) {
+    errors.passwordRepeat = 'Passwords do not match';
+  }
+
+  if (!values.firstName.trim()) {
+    errors.firstName = 'First Name is required';
+  } else if (values.firstName.trim() < 4) {
+    errors.firstName = 'First Name has to be greater then 3 characters';
+  }
+
+  if (!values.lastName.trim()) {
+    errors.lastName = 'Last Name is required';
+  } else if (values.lastName.trim() < 4) {
+    errors.lastName = 'Last Name has to be greater then 3 characters';
   }
   return errors;
 };

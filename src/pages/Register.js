@@ -1,12 +1,29 @@
 import React from 'react';
 import { Row, Button, Form } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import Layout from '../components/layout';
 import FormInput from '../components/formInput/formInput';
 import useForm from '../components/useForm/useForm';
+import validate from '../components/useForm/validateInfo';
+import { addUser } from '../redux/registeReducer/regActions';
 
 const Register = () => {
-  const { values, handleChange } = useForm();
-  const handleSubmit = () => {
+  const dispatch = useDispatch();
+  const {
+    values, errors, handleChange, setErrors,
+  } = useForm();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(validate(values));
+    if (Object.values(errors).length < 1) {
+      const user = {
+        email: values.email,
+        password: values.password,
+        firstName: values.firstName,
+        lastName: values.lastName,
+      };
+      dispatch(addUser({ user }));
+    }
   };
 
   return (

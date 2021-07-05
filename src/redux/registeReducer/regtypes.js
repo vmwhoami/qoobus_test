@@ -1,0 +1,6 @@
+const REGISTER_USER = 'REGISTER_USER';
+const ERROR = 'ERROR';
+
+export {
+  REGISTER_USER, ERROR,
+};
