@@ -43,17 +43,16 @@ const Login = () => {
   }
   return (
     <Layout>
-      <Row>
-        <Row className="d-flex mx-0 p-4 align-items-center w-100 justify-content-between">
+      <Row className="d-flex justify-content-center">
+        <Row className="d-flex mx-0 p-4 justify-content-center w-100">
           <h5 className="text-uppercase">Login</h5>
-
         </Row>
 
-        <Form onSubmit={handleSubmit} className="col-12">
+        <Form onSubmit={handleSubmit} className="col-12 col-md-6">
           <Form.Group className="mb-3 d-flex flex-column col-12">
             <FormInput
-              groupClass="d-flex flex-column px-0 pt-3"
-              inputClass="p-3  border border-success"
+              groupClass="d-flex flex-column px-0 pt-2"
+              inputClass="p-2  border border-success"
               labelClass="text-uppercase font-weight-light"
               name="email"
               label="email"
@@ -63,8 +62,8 @@ const Login = () => {
             />
             {errors.email && <p className="text-danger text-uppercase">{errors.email}</p>}
             <FormInput
-              groupClass="d-flex flex-column px-0 pt-3"
-              inputClass="p-3  border border-success"
+              groupClass="d-flex flex-column px-0 pt-2"
+              inputClass="p-2  border border-success"
               labelClass="text-uppercase font-weight-light"
               name="password"
               label="Password"
@@ -76,7 +75,7 @@ const Login = () => {
             {errors.password && <p className="text-danger text-uppercase">{errors.password}</p>}
             <Form.Group className="d-flex flex-column px-0 pt-5">
               <Button
-                className="btn-flat py-3  text-center rounded-0 border-0"
+                className="btn-flat py-3  text-center rounded-0 border-0 text-uppercase"
                 type="submit"
               >
                 Login

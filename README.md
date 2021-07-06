@@ -29,7 +29,7 @@ Task for React
 
 ### Screenshot
 
-![screenshot](./)
+![screenshot](./qoobus_test.gif)
 
 ## Time estimate
 
@@ -37,7 +37,7 @@ A week with working 4 hours a day sometimes less some times more.
 
 ### Live Demo
 
-Open [this link](https://maib-admin-test.netlify.app/) to view it live.
+Open [this link](https://qoobus-test.netlify.app/) to view it live.
 
 ## Getting Started
 
@@ -50,7 +50,7 @@ Make sure Node.js is running on your local machine
 ### Setup
 
 ```bash
-$ git clone https://github.com/vmwhoami/admin_ui_maib
+$ git clone https://github.com/vmwhoami/qoobus_test
 $ cd admin_ui_maib
 ```
 
@@ -118,7 +118,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/vmwhoami/catalogue-of-statisctics/issues).
+Feel free to check the [issues page](https://github.com/vmwhoami/qoobus_test/issues).
 
 ## Show your support
 
