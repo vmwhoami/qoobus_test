@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addUser, setSubmit } from '../../redux/registeReducer/regActions';
+import { addUser, setSubmit } from '../../redux/regAuth/regActions';
 
 const useForm = (validate) => {
   const dispatch = useDispatch();

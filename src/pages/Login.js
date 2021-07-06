@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Button, Form } from 'react-bootstrap';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../components/layout';
 import FormInput from '../components/formInput/formInput';
 import validateLogin from '../components/useForm/validateLogin';
+import { setLoggedInUser, setLoggedIn } from '../redux/regAuth/regActions';
 
 const Login = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [isSubmitting, setisSubmitting] = useState(false);
+  const users = useSelector((state) => state.register.users);
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     email: '',
@@ -16,10 +19,21 @@ const Login = () => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      dispatch(setLoggedInUser(users.find((user) => user.email === values.email)));
+      dispatch(setLoggedIn(true));
+      setValues({
+        email: '',
+        password: '',
+      });
+    }
+  }, [errors]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validateLogin(values));
+    setErrors(validateLogin(values, users));
+    setisSubmitting(true);
   };
 
   return (
