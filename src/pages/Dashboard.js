@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Layout from '../components/layout';
 import Title from '../components/Title';
 import ChartNav from '../components/ChartNav';
@@ -8,6 +9,7 @@ import Chart from '../components/chart/chart';
 import { getDowloads } from '../redux/downloadsReducer/actions';
 
 const Dashboard = () => {
+  const isLoggedIn = useSelector((state) => state.register.isLoggedIn);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDowloads());
@@ -17,6 +19,11 @@ const Dashboard = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  if (!isLoggedIn) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <Layout>
       <Title title="Dashboard" />

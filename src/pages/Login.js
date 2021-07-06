@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Layout from '../components/layout';
 import FormInput from '../components/formInput/formInput';
 import validateLogin from '../components/useForm/validateLogin';
@@ -10,6 +11,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [isSubmitting, setisSubmitting] = useState(false);
   const users = useSelector((state) => state.register.users);
+  const isLoggedIn = useSelector((state) => state.register.isLoggedIn);
   const [errors, setErrors] = useState({});
   const [values, setValues] = useState({
     email: '',
@@ -36,6 +38,9 @@ const Login = () => {
     setisSubmitting(true);
   };
 
+  if (isLoggedIn) {
+    return <Redirect to="/" />;
+  }
   return (
     <Layout>
       <Row>
