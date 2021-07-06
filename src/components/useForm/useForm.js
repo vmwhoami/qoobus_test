@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser, setSubmit } from '../../redux/regAuth/regActions';
 
-const useForm = (validate) => {
+const useForm = (validate, users) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
     email: '',
@@ -24,7 +24,7 @@ const useForm = (validate) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors(validate(values));
+    setErrors(validate(values, users));
     setisSubmitting(true);
   };
 

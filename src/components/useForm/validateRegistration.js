@@ -1,11 +1,13 @@
-const validateRegistration = (values) => {
+const validateRegistration = (values, users) => {
   const errors = {};
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+  const user = users.find((user) => user.email === values.email);
   if (!values.email.trim()) {
     errors.email = 'Email is required';
   } else if (!re.test(values.email)) {
     errors.email = 'Email adress is invalid';
+  } else if (user) {
+    errors.email = 'Email adress is already taken';
   }
 
   if (!values.password.trim()) {

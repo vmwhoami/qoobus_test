@@ -23,7 +23,7 @@ const options = {
   normalized: true,
   showLine: false,
   animation: {
-    duration: 0,
+    duration: 1,
   },
 };
 

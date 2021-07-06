@@ -7,23 +7,17 @@ import useForm from '../components/useForm/useForm';
 import validateRegistration from '../components/useForm/validateRegistration';
 
 const Register = () => {
-  const submitted = useSelector((state) => state.register.submitted);
+  const state = useSelector((state) => state.register);
+  const { submitted, users } = state;
   const {
     values, errors, handleChange, handleSubmit,
-  } = useForm(validateRegistration);
-  if (submitted) {
-    return (
-      <Layout>
-        <h1>Registration Successful</h1>
-      </Layout>
-    );
-  }
+  } = useForm(validateRegistration, users);
+
   return (
     <Layout>
       <Row>
         <Row className="d-flex mx-0 p-4 align-items-center w-100 justify-content-between">
-          <h5 className="text-uppercase">Register</h5>
-
+          {submitted ? <h5 className="text-uppercase text-success ">Registration Successful</h5> : <h5 className="text-uppercase">Register</h5>}
         </Row>
 
         <Form onSubmit={handleSubmit} className="col-12">
