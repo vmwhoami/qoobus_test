@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   Row, Button, Form, Col,
 } from 'react-bootstrap';
 import { setTimeRange } from '../../redux/downloadsReducer/actions';
+import { cosfigureRaport, installsAnimation } from '../../aninamtionOptions/chartFilterAnim';
 
 const ChartFilter = () => {
   const dispatch = useDispatch();
@@ -19,9 +21,7 @@ const ChartFilter = () => {
     }
     return null;
   };
-
   const diff = getDifference(startDate, timeDifference);
-
   const prevDate = new Date(diff);
   const results = downloads.filter((d) => {
     const date = new Date(d.date);
@@ -43,8 +43,19 @@ const ChartFilter = () => {
   return (
     <>
       <Form onSubmit={handleSubmit} className="m-4 d-flex justify-content-between">
-        <Button type="submit" className="text-uppercase rounded-0 title border-0 py-0">Configure raport</Button>
-        <div className="date-select px-4 py-2">
+        <motion.div
+          variants={cosfigureRaport}
+          initial="hidden"
+          animate="display"
+        >
+          <Button type="submit" className="text-uppercase rounded-0 title border-0 py-3">Configure raport</Button>
+        </motion.div>
+        <motion.div
+          variants={cosfigureRaport}
+          initial="hidden"
+          animate="display"
+          className="date-select px-4 py-2"
+        >
           { /* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label htmlFor="floatingSelect">
             {timeDifference ? `Last ${timeDifference} days` : 'Available data'}
@@ -61,21 +72,27 @@ const ChartFilter = () => {
             showYearDropdown
             dropdownMode="select"
           />
-        </div>
+        </motion.div>
       </Form>
-      <Row>
-        <Col lg={4} sm={6} className="py-4 ml-3 box-shadow">
-          <h6>Instalari pe dispozitive active</h6>
-          <Col className="d-flex align-items-center">
-            <h2 className="mr-2">
-              {activeDownloads}
-            </h2>
-            <span>
-              {`${percentage} vs previous ${timeDifference || ''} days`}
-            </span>
+      <motion.div
+        variants={installsAnimation}
+        initial="init"
+        animate="animated"
+      >
+        <Row>
+          <Col lg={4} sm={6} className="py-4 ml-3 box-shadow">
+            <h6>Instalari pe dispozitive active</h6>
+            <Col className="d-flex align-items-center">
+              <h2 className="mr-2">
+                {activeDownloads}
+              </h2>
+              <span>
+                {`${percentage} vs previous ${timeDifference || ''} days`}
+              </span>
+            </Col>
           </Col>
-        </Col>
-      </Row>
+        </Row>
+      </motion.div>
     </>
   );
 };
