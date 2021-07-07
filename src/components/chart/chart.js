@@ -83,6 +83,7 @@ const Chart = () => {
         </Row>
         {newResults.map((result) => <ReportResults key={result.id} report={result} />)}
       </div>
+
       <nav aria-label="Page navigation example">
         <ul className="pagination">
           <li className="page-item"><button onClick={prevPage} type="button" className="page-link">Previous</button></li>
