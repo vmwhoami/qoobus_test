@@ -12,13 +12,15 @@ const Dashboard = () => {
   const isLoggedIn = useSelector((state) => state.register.isLoggedIn);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDowloads());
-    const interval = setInterval(() => {
+    let interval;
+    if (isLoggedIn) {
       dispatch(getDowloads());
-    }, 10000);
-
+      interval = setInterval(() => {
+        dispatch(getDowloads());
+      }, 10000);
+    }
     return () => clearInterval(interval);
-  }, []);
+  }, [isLoggedIn]);
 
   if (!isLoggedIn) {
     return <Redirect to="/login" />;

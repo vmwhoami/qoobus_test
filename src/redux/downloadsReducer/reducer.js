@@ -5,7 +5,7 @@ import {
 const initial = {
   downloads: [],
   error: false,
-  errors: {},
+  loading: true,
   timeRange: [],
   timeDifference: 'all',
   activeDownloads: null,
@@ -20,7 +20,7 @@ const reducer = (state = initial, action) => {
     case SET_TIME_RANGE:
       return { ...state, timeRange: [...action.payload] };
     case GET_DOWNLOADS:
-      return { ...state, downloads: action.payload };
+      return { ...state, downloads: action.payload, loading: false };
     case ERROR:
       return { ...state, error: !state.error, errors: action.payload };
     default:

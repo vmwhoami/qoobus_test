@@ -51,7 +51,7 @@ Make sure Node.js is running on your local machine
 
 ```bash
 $ git clone https://github.com/vmwhoami/qoobus_test
-$ cd admin_ui_maib
+$ cd qoobus_test
 ```
 
 Install modules:

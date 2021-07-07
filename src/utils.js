@@ -48,10 +48,16 @@ const timeDifference = (endDate, startDate) => {
   return null;
 };
 
-const PreviousDaysNums = () => {
-
+const paginate = (items, itemsPerPage = 9) => {
+  const pages = Math.ceil(items.length / itemsPerPage);
+  const newItems = Array.from({ length: pages }, (_, index) => {
+    const start = index * itemsPerPage;
+    return items.slice(start, start + itemsPerPage);
+  });
+  return newItems;
 };
 
+const genkey = () => Math.random().toString(36).slice(2, 7);
 export {
-  formatDate, checkUserName, filterer, timeDifference, PreviousDaysNums,
+  formatDate, checkUserName, filterer, timeDifference, paginate, genkey,
 };
