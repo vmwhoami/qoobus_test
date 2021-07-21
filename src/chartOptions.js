@@ -20,11 +20,8 @@ const chartData = (results, downloads) => {
   return data;
 };
 const options = {
-  normalized: true,
   showLine: false,
-  animation: {
-    duration: 0,
-  },
+
 };
 
 export { chartData, options };
