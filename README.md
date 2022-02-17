@@ -31,9 +31,6 @@ Task for React
 
 ![screenshot](./qoobus_test.gif)
 
-## Time estimate
-
-A week with working 4 hours a day sometimes less some times more.
 
 ### Live Demo
 
